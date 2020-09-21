@@ -6,13 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cypress:open": "cypress open",
-	"cypress:run": "cypress run"
+    "cypress:run": "cypress run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cypress": "^3.6.0",
+    "cypress": "^5.2.0",
     "cypress-xpath": "^1.6.0"
   }
 }

@@ -25,21 +25,21 @@ describe('Testes Dinâmicos', () => {
         cy.get('#resultado > span').should('contain', '17/07/2012');
     })
 
-    it.only('Avançar data do sistema', () => {
+    it('Avançar data do sistema', () => {
         cy.get('#buttonTimePassed').click();
-        cy.get('#resultado > span').invoke('text').should('gt', 1342562510000);
+        cy.get('#resultado > span').invoke('text').then(parseInt).should('gt', 1342562510000);
 
         cy.clock();
         cy.get('#buttonTimePassed').click();
-        cy.get('#resultado > span').invoke('text').should('lte', 0);
+        cy.get('#resultado > span').invoke('text').then(parseInt).should('lte', 0);
 
         cy.tick(5000);
         cy.get('#buttonTimePassed').click();
-        cy.get('#resultado > span').invoke('text').should('gte', 5000);
+        cy.get('#resultado > span').invoke('text').then(parseInt).should('gte', 5000);
 
         cy.tick(10000);
         cy.get('#buttonTimePassed').click();
-        cy.get('#resultado > span').invoke('text').should('gte', 15000);
+        cy.get('#resultado > span').invoke('text').then(parseInt).should('gte', 15000);
     })
 
 })
