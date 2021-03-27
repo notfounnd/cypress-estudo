@@ -25,12 +25,12 @@ require('cypress-xpath')
 // Configurando prioridade de busca da ferramenta
 Cypress.SelectorPlayground.defaults({
     selectorPriority: [
-        'id',
-        'class',
-        'attributes',
         'data-cy',
         'data-test',
         'data-testid',
+        'id',
+        'attributes',
+        'class',
         'tag',
         'nth-child'
     ]

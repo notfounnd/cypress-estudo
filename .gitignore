@@ -122,4 +122,8 @@ dist
 # Ignore all local history of files
 .history
 
+### Custom ###
+yarn.lock
+packages-lock.json
+
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode
