@@ -125,5 +125,7 @@ dist
 ### Custom ###
 yarn.lock
 packages-lock.json
+*/cypress/videos
+*/cypress/screenshots
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode
