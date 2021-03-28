@@ -44,3 +44,49 @@ Cypress.Commands.add('resetApp', () => {
     cy.get(locator.MENU.SETTINGS).click()
     cy.get(locator.MENU.RESET).click()
 })
+
+Cypress.Commands.add('getToken', (username, password) => {
+    cy.request({
+        url: '/signin',
+        method: 'POST',
+        body: {
+            email: username,
+            senha: password,
+            redirecionar: false
+        }
+    })
+    .its('body.token').should('not.be.empty')
+    .then(token => {
+        Cypress.env('token', token)
+        return token
+    })
+})
+
+Cypress.Commands.add('resetREST', () => {
+    cy.request({
+        url: '/reset',
+        method: 'GET',
+    }).its('status').should('be.equal', 200)
+})
+
+Cypress.Commands.add('getAccountByName', (accountName) => {
+    cy.request({
+        url: '/contas',
+        method: 'GET',
+        qs: {
+            nome: accountName
+        }
+    }).then(response => {
+        return response
+    })
+})
+
+Cypress.Commands.overwrite('request', (originalFn, ...options) => {
+    if(options.length === 1) {
+        if(Cypress.env('token')){
+            options[0].headers = { Authorization: `JWT ${Cypress.env('token')}` }
+        }
+    }
+
+    return originalFn(...options)
+})
