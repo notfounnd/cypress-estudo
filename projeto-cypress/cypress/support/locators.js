@@ -24,7 +24,8 @@ const locators = {
         ROWS: '.list-group > li',
         FN_XPATH_ELEMENT: (description, value) => `//div[@class="list-group"]//span[contains(.,"${description}")]/following-sibling::small[contains(.,"${value}")]`,
         FN_XPATH_BTN_UPDATE: transaction => `//span[contains(.,"${transaction}")]/../../..//i[contains(@class,"edit")]`,
-        FN_XPATH_BTN_TRASH: transaction => `//span[contains(.,"${transaction}")]/../../..//i[contains(@class,"trash")]`
+        FN_XPATH_BTN_TRASH: transaction => `//span[contains(.,"${transaction}")]/../../..//i[contains(@class,"trash")]`,
+        FN_XPATH_TABLE_ROW: transaction => `//span[contains(.,"${transaction}")]/../../../..`
     },
     ACCOUNTS: {
         NAME: '[data-test=nome]',
